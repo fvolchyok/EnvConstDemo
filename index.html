@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<!-- Required to avoid default system-provided margins for iPhones with "notch" in the top -->
+<meta name='viewport' content='initial-scale=1, viewport-fit=cover'>
+<style>
+body {
+    margin: 0;
+}
+/*
+ The whole idea based on the useage of safe-area-inset-XXX variables provided by
+ WKWebView on device (https://webkit.org/blog/7929/designing-websites-for-iphone-x/)
+ Keep in mind that there is compatibility breaking change in naming (constant -> env).
+ */
+h1 {
+    padding-top: 20px; /* status bar height on pre iOS 11 (there are no iPhones in this category
+                        with "notch" in the top we should care about) */
+    padding-top: constant(safe-area-inset-top); /* safe area inset top on iOS 11.0 - 11.2 (not included(?)) */
+    padding-top: env(safe-area-inset-top); /* safe area inset top on iOS 11.2+ */
+    margin-top: 0px;
+}
+.hdiv {
+    background: blue;
+}
+</style>
+</head>
+<body>
+
+<div class="hdiv">
+    <h1>My First Heading</h1>
+</div>
+<p>My first paragraph.</p>
+
+</body>
+</html>
